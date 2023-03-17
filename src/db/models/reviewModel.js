@@ -33,3 +33,4 @@ export class ReviewModel {
 const reviewModel = new ReviewModel();
 
 export { reviewModel };
+
