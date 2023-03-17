@@ -45,6 +45,7 @@ class ReviewController {
       next(error);
     }
   }
+  
 
   async updateReview(req, res, next) {
     try {
