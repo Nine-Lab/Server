@@ -23,3 +23,25 @@ export const ultraFineDust = (req, res)  => {
             return { noExistFile };
         }
     })};
+
+export const flooding = (req, res)  => {
+    const jsonFile = fs.readFile('./src/data/flooding.json', 'utf-8',
+        (err, data) => {
+
+        try {
+            res.status(200).send(data);
+        } catch (error) {
+            return { noExistFile };
+        }
+    })};
+
+export const housingSatisfaction = (req, res)  => {
+    const jsonFile = fs.readFile('./src/data/housingsatisfaction.json', 'utf-8',
+        (err, data) => {
+
+        try {
+            res.status(200).send(data);
+        } catch (error) {
+            return { noExistFile };
+        }
+    })};
