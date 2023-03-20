@@ -6,7 +6,7 @@ import morgan from "morgan";
 import mongoose from "mongoose";
 import path from "path";
 import swaggerJSDoc from "swagger-jsdoc";
-import { userRouter, reviewRouter } from "./src/routes/index.js";
+import { userRouter, reviewRouter, sendToFrontRouter } from "./src/routes/index.js";
 import { swaggerUi, specs } from "./swagger.js";
 // import api from './routes';
 
@@ -82,6 +82,7 @@ app.get("/", (req, res) => {
 
 app.use("/api", userRouter);
 app.use("/api", reviewRouter);
+app.use("/api", sendToFrontRouter);
 
 // DB 만들고 연결할 주소
 mongoose.connect(process.env.DB_URL);
