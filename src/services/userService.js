@@ -1,17 +1,17 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { userModel } from "../db/models/userModel.js";
+import { User }from "../db/models/userModel.js";
 
 class UserService {
-  constructor(userModel) {
-    this.userModel = userModel;
+  constructor(User) {
+    this.User = User;
   }
 
   async addUser(userInfo) {
     const { email, name, password } = userInfo;
 
     // 이메일 중복확인
-    const user = await this.userModel.findByEmail(email);
+    const user = await this.User.findByEmail(email);
     if (user) {
       throw new Error("이미 사용중인 이메일 입니다."); // 500이 맞나..?
     }
@@ -19,7 +19,7 @@ class UserService {
     // 비밀번호를 해쉬화해서 회원정보를 만들고
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUserInfo = { name, email, password: hashedPassword };
-    const createdNewUser = await this.userModel.create(newUserInfo); // Model에 생성한 유저를 넣어 줍니다.
+    const createdNewUser = await this.User.create(newUserInfo); // Model에 생성한 유저를 넣어 줍니다.
 
     return createdNewUser;
   }
@@ -29,7 +29,7 @@ class UserService {
     const { email, password } = loginInfo;
 
     // 이메일 검증
-    const user = await this.userModel.findByEmail(email);
+    const user = await this.User.findByEmail(email);
     if (!user) {
       throw new Error("이메일이 일치하지 않습니다.");
     }
@@ -58,6 +58,6 @@ class UserService {
   }
 }
 
-const userService = new UserService(userModel);
+const userService = new UserService(User);
 
 export { userService };
