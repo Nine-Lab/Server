@@ -3,15 +3,15 @@ import jwt from "jsonwebtoken";
 const loginRequired = (req, res, next) => {
   // authorization 검증
   if (req.headers.authorization === undefined) {
-    res.status(401).json({
-      error: "로그인이 필요 서비스입니다.",
+    res.status(403).json({
+      error: "로그인이 필요한 서비스입니다.",
       data: null,
     });
   }
   // 토큰 검증
   try {
     const secretKey = process.env.JWT_SECRET_KEY || "secret-key";
-    const token = req.headers.authorization.slice(7); // slice 말고 다른 방법으로
+    const token = req.headers.authorization.split(" ")[1];
     if (!token || token === "null") {
       res.status(401).json({
         result: "forbidden-approach",
