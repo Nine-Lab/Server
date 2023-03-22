@@ -9,6 +9,3 @@ export const noExistFile = async (error, req, res, next) => {
 };
  
 export default errorMiddleware;
-
-
-
