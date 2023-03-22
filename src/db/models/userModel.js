@@ -34,7 +34,7 @@ export const postJoin = async (req, res) => {
 //마이 페이지
 export const seeMyPage = async (req, res) => {
   //토큰에 있는 id
-  const id = res.locals.user;
+  const id = req.currentUserId;
 
   const currentUser = await User.findOne({ userId: id });
   try {
@@ -47,7 +47,7 @@ export const seeMyPage = async (req, res) => {
 //회원 정보 수정
 export const changeUser = async (req, res) => {
   const { name, email,  phoneNumber} = req.body;
-  const userId = res.locals.user;
+  const userId = req.currentUserId;
   const user = await User.findOne({ userId });
 
   try {
@@ -72,7 +72,7 @@ export const changeUser = async (req, res) => {
 //회원탈퇴
 export const deleteUser = async (req, res) => {
   //토큰으로 유저 찾기
-  const userId = res.locals.user;
+  const userId = req.currentUserId;
   const user = await User.findOne({ userId });
 
   const { password } = req.body;

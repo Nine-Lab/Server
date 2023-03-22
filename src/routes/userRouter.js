@@ -1,7 +1,7 @@
 import express from "express";
 import { userController } from "../controllers/userController.js";
 import { postJoin, seeMyPage, changeUser, deleteUser} from "../db/models/userModel.js";
-import loginRequired from "../middleware/loginRequired.js";
+import { loginRequired } from "../middleware/loginRequired.js";
 
 const userRouter = express.Router();
 
@@ -11,7 +11,7 @@ userRouter.post("/users/register", userController.register);
 // 로그인
 userRouter.post("/users/login", userController.login);
 
-// 로그인 
+// 회원가입(다른방식)
 userRouter.post("/users/signin", postJoin);
 
 // 마이페이지
