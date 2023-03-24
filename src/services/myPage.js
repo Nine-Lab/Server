@@ -1,5 +1,5 @@
 import { model } from "mongoose";
-import UserSchema from "../schemas/userSchema.js";
+import UserSchema from "../db/schemas/userSchema.js";
 
 const User = model("users", UserSchema);
 
@@ -18,7 +18,7 @@ export const changeUser = async (req, res) => {
   const { email } = req.body;
   const user =  await User.findOne({ email});
   try {
-    // // db에서 찾지 못한 경우, 에러 메시지 반환
+  // db에서 찾지 못한 경우, 에러 메시지 반환
     if (!user) {
       const errorMessage = "가입 내역이 없습니다. 다시 한 번 확인해 주세요.";
       return { errorMessage };
@@ -27,7 +27,6 @@ export const changeUser = async (req, res) => {
       email,
       phoneNumber
     });
-
     res.json(updatedUser);
     return updatedUser;
   } catch (error) {
