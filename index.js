@@ -8,6 +8,7 @@ import path from "path";
 import swaggerJSDoc from "swagger-jsdoc";
 import { userRouter, reviewRouter } from "./src/routes/index.js";
 import { swaggerUi, specs } from "./swagger.js";
+import sendToFrontRouter from "./src/routes/sendToFrontRouter.js";
 // import api from './routes';
 
 // 환경변수 사용
@@ -74,6 +75,7 @@ app.use(express.static(path.join(dirname, "public")));
 
 app.use("/api", userRouter);
 app.use("/api", reviewRouter);
+app.use("/api", sendToFrontRouter);
 
 // DB 만들고 연결할 주소
 mongoose.connect(process.env.DB_URL);
