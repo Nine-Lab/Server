@@ -1,48 +1,23 @@
 import fs from 'fs';
-import noExistFile from "../middleware/errorMiddleware.js";
 
-
-const findDust = (req, res)  => {
-    const jsonFile = fs.readFile('./src/data/finedust.json', 'utf-8',
-     (err, data) => {
-
-        try {
-            res.status(200).send(data);
-        } catch (error) {
-            return { noExistFile };
-        }
-    })};
+const fineDust = (req, res)  => {
+    const jsonFile = fs.readFileSync('./src/data/finedust.json', 'utf-8')
+    res.status(200).send(jsonFile);   
+};
 
 const ultraFineDust = (req, res)  => {
-    const jsonFile = fs.readFile('./src/data/ultrafinedust.json', 'utf-8',
-        (err, data) => {
-
-        try {
-            res.status(200).send(data);
-        } catch (error) {
-            return { noExistFile };
-        }
-    })};
+    const jsonFile = fs.readFileSync('./src/data/ultrafinedust.json', 'utf-8')
+    res.status(200).send(jsonFile);
+};  
 
 const flooding = (req, res)  => {
-    const jsonFile = fs.readFile('./src/data/flooding.json', 'utf-8',
-        (err, data) => {
-
-        try {
-            res.status(200).send(data);
-        } catch (error) {
-            return { noExistFile };
-        }
-    })};
+    const jsonFile = fs.readFileSync('./src/data/flooding.json', 'utf-8')
+    res.status(200).send(jsonFile);
+};   
 
 const housingSatisaction = (req, res)  => {
-    const jsonFile = fs.readFile('./src/data/housingsatisfaction.json', 'utf-8',
-        (err, data) => {
+    const jsonFile = fs.readFileSync('./src/data/housingsatisfaction.json', 'utf-8')
+    res.status(200).send(jsonFile);
+};   
 
-        try {
-            res.status(200).send(data);
-        } catch (error) {
-            return { noExistFile };
-        }
-    })};
-export { findDust, ultraFineDust, flooding, housingSatisaction }
+export { fineDust, ultraFineDust, flooding, housingSatisaction }
