@@ -1,6 +1,6 @@
 import express from "express";
 import { userController } from "../controllers/userController.js";
-import { myPage } from "../services/myPage.js";
+import { myPage, changeUser } from "../services/myPage.js";
 
 const userRouter = express.Router();
 
@@ -14,6 +14,6 @@ userRouter.post("/users/login", userController.login);
 userRouter.get("/users/mypage", myPage);
 
 // 회원정보 수정
-
+userRouter.post("/users/:userId", changeUser);
 
 export default userRouter;
