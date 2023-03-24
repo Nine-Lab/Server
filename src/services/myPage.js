@@ -4,7 +4,7 @@ import UserSchema from "../db/schemas/userSchema.js";
 const User = model("users", UserSchema);
 
 // 마이페이지
-export const myPage = async( req, res ) => {
+const myPage = async( req, res ) => {
   const { email } = req.body;
   const currentUser = await User.findOne({ email });
     try {
@@ -14,7 +14,7 @@ export const myPage = async( req, res ) => {
     }
 };
 // 회원 정보 수정
-export const changeUser = async (req, res) => {
+const changeUser = async (req, res) => {
   const { email } = req.body;
   const user =  await User.findOne({ email});
   try {
@@ -33,3 +33,5 @@ export const changeUser = async (req, res) => {
     return error;
   }
 };
+
+export {myPage, changeUser}

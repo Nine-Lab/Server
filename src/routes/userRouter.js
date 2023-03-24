@@ -11,6 +11,9 @@ userRouter.post("/users/register", userController.register);
 userRouter.post("/users/login", userController.login);
 
 // 마이페이지
-userRouter.post("/users/mypage", myPage);
+userRouter.get("/users/mypage", myPage);
+
+// 회원정보 수정
+
 
 export default userRouter;
