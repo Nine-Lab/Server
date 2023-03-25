@@ -15,7 +15,7 @@ const myPage = async( req, res ) => {
 };
 // 회원 정보 수정
 const changeUser = async (req, res) => {
-  const { email } = req.body;
+  const u = req.body;
   const user =  await User.findOne({ email});
   try {
   // db에서 찾지 못한 경우, 에러 메시지 반환
