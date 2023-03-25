@@ -15,7 +15,7 @@ export class UserModel {
     const createdNewUser = await User.create(userInfo);
     return createdNewUser;
   }
-}
+};
 
 const userModel = new UserModel();
 
